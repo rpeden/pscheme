@@ -37,6 +37,8 @@ our $GlobalEnv = new PScm::Env(
 
 sub ReadEvalPrint{
 	my ($infh, $outfh) = @_;
+
+	$outfh ||= new FileHandle(">-");
 	my $reader = new PScm::Read($infh);
 	while (defined(my $expr = $reader->Read)){
 		my $result = $expr->Eval();
