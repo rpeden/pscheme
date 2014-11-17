@@ -19,4 +19,7 @@ sub Read {
 	my ($self) = @_;
 
 	my $token = $self->_next_token();
+	return undef unless defined $token;
+
+	return $token unless $token->is_open_token;
 }
