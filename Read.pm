@@ -14,3 +14,9 @@ sub new {
 		Line 	   => '',
 	}, $class;
 }
+
+sub Read {
+	my ($self) = @_;
+
+	my $token = $self->_next_token();
+}
