@@ -22,4 +22,15 @@ sub Read {
 	return undef unless defined $token;
 
 	return $token unless $token->is_open_token;
+	
+	my @res = ();
+	
+	while(1) {
+		$token = $self->Read;
+		die "unexpected EOF" if !defined $token;
+		last if $token->is_close_token;
+		push @res, $token;
+	}
+	
+	return new PScm::Expr::List(@res);
 }
