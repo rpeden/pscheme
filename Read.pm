@@ -43,4 +43,18 @@ sub _next_token {
 		return undef unless defined $self->{Line};
 		$self->{Line} =~ s/^\s+//s;
 	}
+
+	for ($self->{Line}) {
+		s/^\(\s*// && return PScm::Token::Open->new();
+		s/^\)\s*// && return PScm::Token::Close->new();
+		s/^([-+]?\d+)\s*// && return PScm::Expr::Number->new($1);
+		s/^"((?:(?:\\.)|([^"]))*)"\s*// && do {
+			my $string = $1;
+			$string =~ s/\\//g;
+			return PScm::Expr::String->new($string);
+		}
+		s/^([^\s(\)]+)\s*//
+			&& return PScm::Expr::Symbol->new($1);
+	}
+	die "can't parse: $self->{Line}";
 }
