@@ -15,3 +15,16 @@ sub Eval {
 }
 
 sub value { $_[0] }
+
+##########################
+package PScm::Expr::Atom;
+use base qw(PScm::Expr);
+
+sub new {
+	my ($class, $value) = @_;
+	bless \$value, $class;
+}
+
+sub value { ${ $_[0] } }
+
+sub as_string { $_[0]->value }
