@@ -28,3 +28,14 @@ sub new {
 sub value { ${ $_[0] } }
 
 sub as_string { $_[0]->value }
+
+###########################
+package PScm::Expr::List;
+use base qw(PScm::Expr);
+
+sub new {
+	my(@class, @list) = @_;
+
+	$class = ref($class) || $class;
+	bless [@list], $class;
+}
