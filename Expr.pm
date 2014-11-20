@@ -49,3 +49,10 @@ sub rest {
 	shift @value;
 	return $self->new(@value);
 }
+
+sub as_string {
+	my ($self) = @_;
+	return '('
+		. join(' ', map { $_->as_string } $self->value)
+		. ')';
+}
