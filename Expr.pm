@@ -39,3 +39,5 @@ sub new {
 	$class = ref($class) || $class;
 	bless [@list], $class;
 }
+
+sub first { $_[0][0] }
