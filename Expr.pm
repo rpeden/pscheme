@@ -56,3 +56,9 @@ sub as_string {
 		. join(' ', map { $_->as_string } $self->value)
 		. ')';
 }
+
+sub Eval {
+	my ($self) = @_;
+	my $op = $self->first()->Eval();
+	return $op->Apply($self->rest);
+}
