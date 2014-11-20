@@ -41,3 +41,11 @@ sub new {
 }
 
 sub first { $_[0][0] }
+
+sub rest {
+	my ($self) = @_;
+
+	my @value = $self->value;
+	shift @value;
+	return $self->new(@value);
+}
