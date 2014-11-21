@@ -75,3 +75,9 @@ sub Eval {
 ##################################
 package PScm::Expr::Literal;
 use base qw(PScm::Expr::Atom);
+
+##################################
+package PScm::Expr::Number;
+use base qw(PScm::Expr::Literal);
+
+use Math::BigInt;
