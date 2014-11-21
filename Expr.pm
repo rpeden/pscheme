@@ -66,3 +66,8 @@ sub Eval {
 #################################
 package PScm::Expr::Symbol;
 use base qw(PScm::Expr::Atom);
+
+sub Eval {
+	my ($self) = @_;
+	return $PScm::GlobalEnv->LookUp->($self);
+}
