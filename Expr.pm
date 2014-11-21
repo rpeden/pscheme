@@ -87,3 +87,7 @@ sub new {
 	$value = new Math::BigInt($value) unless ref($value);
 	$class->SUPER::new($value);
 }
+
+###################################
+package PScm::Expr::String;
+use base qw(PScm::Expr::Literal)
