@@ -62,3 +62,7 @@ sub Eval {
 	my $op = $self->first()->Eval();
 	return $op->Apply($self->rest);
 }
+
+#################################
+package PScm::Expr::Symbol;
+use base qw(PScm::Expr::Atom);
