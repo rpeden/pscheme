@@ -90,4 +90,13 @@ sub new {
 
 ###################################
 package PScm::Expr::String;
-use base qw(PScm::Expr::Literal)
+use base qw(PScm::Expr::Literal);
+
+sub as_string {
+	my ($self) = @_;
+
+	my $copy = $self->value;
+	$copy =~ s/\\/\\\\/sg;
+	$copy =~ s/"/\\"/sg;
+	return qq'"$copy"';
+}
