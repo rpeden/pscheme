@@ -81,3 +81,9 @@ package PScm::Expr::Number;
 use base qw(PScm::Expr::Literal);
 
 use Math::BigInt;
+
+sub new {
+	my ($class, $value) = @_;
+	$value = new Math::BigInt($value) unless ref($value);
+	$class->SUPER::new($value);
+}
