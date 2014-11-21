@@ -71,3 +71,7 @@ sub Eval {
 	my ($self) = @_;
 	return $PScm::GlobalEnv->LookUp->($self);
 }
+
+##################################
+package PScm::Expr::Literal;
+use base qw(PScm::Expr::Atom);
